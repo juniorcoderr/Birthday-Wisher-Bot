@@ -1,5 +1,6 @@
 from datetime import datetime
 import pandas
+import random
 import smtplib
 
 MY_EMAIL = ""
@@ -14,7 +15,7 @@ birthdays_dict = {(data_row["month"], data_row["day"]): data_row for (index, dat
 
 if today_tuple in birthdays_dict:
     birthday_person = birthdays_dict[today_tuple]
-    file_path = f"letter_templates/letter_1.txt"
+    file_path = f"letter_templates/letter_{random.randint(1, 3)}.txt"
     with open(file_path) as letter_file:
         contents = letter_file.read()
         contents = contents.replace("[NAME]", birthday_person["name"])
